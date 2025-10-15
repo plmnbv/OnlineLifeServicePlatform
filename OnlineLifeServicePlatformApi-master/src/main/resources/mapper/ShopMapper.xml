@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.linked.dazhongdianpingapi.business.dao.ShopDao">
+
+    <!-- 获取商品列表 -->
+    <select id="getShopList" resultType="com.linked.dazhongdianpingapi.business.pojo.po.Shop"
+            parameterType="com.linked.dazhongdianpingapi.business.pojo.vo.shop.ShopListVO">
+        SELECT distinct
+        *
+        FROM tb_shop
+        WHERE 1=1
+        <if test="categoryId !=null and categoryId !=''">
+            and shop_category_id = #{categoryId}
+        </if>
+    </select>
+
+    <select id="getShopDetail" resultType="com.linked.dazhongdianpingapi.business.pojo.dto.ShopDetailDTO">
+        select
+        *
+        from tb_shop ts
+        left join tb_comment tc on ts.id = tc.shop_commented_id
+        where ts.id = #{shopId}
+    </select>
+
+</mapper>
