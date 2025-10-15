@@ -1,0 +1,2 @@
+# OnlineLifeServicePlatform
+这是一个线上生活服务平台，是本人开发一个实践项目
